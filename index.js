@@ -511,6 +511,12 @@ function generateSessionId(sess) {
  */
 
 function getcookie(req, name, secrets) {
+  // header token
+  var sessionID = req.header('X-Session-Token')
+  if (sessionID) {
+    return sessionID
+  }
+
   var header = req.headers.cookie;
   var raw;
   var val;
